@@ -5,13 +5,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Require the Rigidbody2D component to be attached to the same GameObject
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
 public class PlayerController : MonoBehaviour
 {
     // Variable to store the move input
     Vector2 moveInput;
     // Variable to store the walk speed
     public float walkSpeed = 5f;
+    // Variable to store the jump impulse
+    public float jumpImpulse = 6.5f;
     // Reference to the Rigidbody2D component
     Rigidbody2D rb;
     // Reference to the Animator component
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Variable to store if the player is moving [SerializedField to make it visible in the Inspector
     [SerializeField]
     private bool _isMoving = false;
+    TouchingDirections touchingDirections;
 
     // Property to check if the player is moving
     public bool IsMoving { 
@@ -51,30 +54,37 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+    public float CurrentMoveSpeed
+    {
+        get
+        {
+            if (!touchingDirections.IsOnWall)
+            {
+                return walkSpeed;
+            }
+            else
+            { 
+                return 0;
+            }
+        }
+    }
+
     // Awake is called when PlayerController is initialized
     private void Awake()
     {
         // Get the reference to the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        touchingDirections = GetComponent<TouchingDirections>();
     }
 
     // Frame-rate independent update method
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveInput.x * walkSpeed, rb.velocity.y);
+        // Move the player accoording to its speed and move input
+        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        // Update animator yVelocity parameter
+        animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
     }
 
     // Method to set the facing direction of the player depending on the move input
@@ -97,5 +107,16 @@ public class PlayerController : MonoBehaviour
         IsMoving = moveInput != Vector2.zero;
 
         SetFacingDirection(moveInput);
+    }
+
+    // Method to execute when Jump callback is triggered
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        // TODO check ifAlive 
+        if (context.started && touchingDirections.IsGrounded)
+        {
+            animator.SetTrigger(AnimationStrings.jump);
+            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
     }
 }
