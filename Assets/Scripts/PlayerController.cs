@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         private set 
         { 
             _isMoving = value;
+            // Set animator isMoving parameter
             animator.SetBool(AnimationStrings.isMoving, value);
         } 
     }
@@ -54,16 +55,35 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+    // Property to check if the player can move
+    public bool CanMove { get
+        { 
+            return animator.GetBool(AnimationStrings.canMove);
+        } 
+    }
+
+    // Property to get the current move speed
     public float CurrentMoveSpeed
     {
         get
         {
-            if (!touchingDirections.IsOnWall)
+            // Animator canMove parameter is true
+            if (CanMove)
             {
-                return walkSpeed;
+                // Player is not touching a wall
+                if (!touchingDirections.IsOnWall)
+                {
+                    return walkSpeed;
+                }
+                // Player is touching a wall
+                else
+                {
+                    return 0;
+                }
             }
+            // Animator locked movement
             else
-            { 
+            {
                 return 0;
             }
         }
@@ -74,7 +94,9 @@ public class PlayerController : MonoBehaviour
     {
         // Get the reference to the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
+        // Get the reference to the Animator component
         animator = GetComponent<Animator>();
+        // Get the reference to the TouchingDirections component
         touchingDirections = GetComponent<TouchingDirections>();
     }
 
@@ -101,11 +123,12 @@ public class PlayerController : MonoBehaviour
 
     // Method to execute when Move callback is triggered
     public void OnMove(InputAction.CallbackContext context)
-    { 
+    {
+        // Get the move input value
         moveInput = context.ReadValue<Vector2>();
-
+        // Check if the player is moving
         IsMoving = moveInput != Vector2.zero;
-
+        // Set the facing direction of the player
         SetFacingDirection(moveInput);
     }
 
@@ -113,10 +136,22 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         // TODO check ifAlive 
+        if (context.started && touchingDirections.IsGrounded && CanMove)
+        {
+            // Set animator jump trigger
+            animator.SetTrigger(AnimationStrings.jumpTrigger);
+            // Add an impulse to the player Rigidbody2D component
+            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        // TODO check ifAlive 
         if (context.started && touchingDirections.IsGrounded)
         {
-            animator.SetTrigger(AnimationStrings.jump);
-            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+            // Set animator attack trigger
+            animator.SetTrigger(AnimationStrings.attackTrigger);
         }
     }
 }
