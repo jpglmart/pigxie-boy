@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         private set 
         { 
             _isMoving = value;
-            animator.SetBool("isMoving", value);
+            animator.SetBool(AnimationStrings.isMoving, value);
         } 
     }
     // Variable to store if the player is facing right
