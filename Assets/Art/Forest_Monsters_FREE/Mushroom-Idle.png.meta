@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4e3694da65fbb63439632d7c3a749ed0
+guid: 9ea01a25c781cbb43964bd6b48631e02
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,13 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mushroom-Idle_flipped_0
+      name: Mushroom-Idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 80
-        height: 63
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43746bdee03169442b9601a64a0e3ace
-      internalID: 1953756788
+      spriteID: e729d6cfe75a40c49959adde1f13b4dc
+      internalID: -923631524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Idle_flipped_1
+      name: Mushroom-Idle_1
       rect:
         serializedVersion: 2
         x: 80
         y: 0
         width: 80
-        height: 63
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23548b2ccdcead142b9b4ae3aaedced7
-      internalID: -940415658
+      spriteID: 976614b81f8d9d24c978eba9a60b2d27
+      internalID: -476359022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Idle_flipped_2
+      name: Mushroom-Idle_2
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 80
-        height: 63
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8c0dc50654bfb142a68ddf64508178f
-      internalID: -151467191
+      spriteID: 63ee3c24700ba164db021f8c94d897cd
+      internalID: -1415306703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Idle_flipped_3
+      name: Mushroom-Idle_3
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 80
-        height: 63
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abd21b10f99d01c43b619ab133355dfd
-      internalID: 993156545
+      spriteID: bf4b2f7707ade68449cef09c74dd9c3a
+      internalID: 937583084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Idle_flipped_4
+      name: Mushroom-Idle_4
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 80
-        height: 63
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 488e61b6f2b2ec441ad5f84cba7f16d9
-      internalID: -1981081523
+      spriteID: 8dab2ddd1b483a747b3d7f04dcdefe0b
+      internalID: -519214505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Idle_flipped_5
+      name: Mushroom-Idle_5
       rect:
         serializedVersion: 2
         x: 400
         y: 0
         width: 80
-        height: 63
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a64c69641c279c479f56386f9783478
-      internalID: 1215717664
+      spriteID: 2f5f5d47405cb174e8a6fc4e8f32311e
+      internalID: -1889482016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushroom-Idle_flipped_6
+      name: Mushroom-Idle_6
       rect:
         serializedVersion: 2
         x: 480
         y: 0
         width: 80
-        height: 63
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bd018186d2647447ab9345e6a1d7895
-      internalID: -65839493
+      spriteID: 9461e1d4b4439994ebc89a97de7ae22f
+      internalID: 244769557
       vertices: []
       indices: 
       edges: []
@@ -264,13 +264,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mushroom-Idle_flipped_3: 993156545
-      Mushroom-Idle_flipped_5: 1215717664
-      Mushroom-Idle_flipped_4: -1981081523
-      Mushroom-Idle_flipped_0: 1953756788
-      Mushroom-Idle_flipped_6: -65839493
-      Mushroom-Idle_flipped_1: -940415658
-      Mushroom-Idle_flipped_2: -151467191
+      Mushroom-Idle_4: -519214505
+      Mushroom-Idle_6: 244769557
+      Mushroom-Idle_0: -923631524
+      Mushroom-Idle_3: 937583084
+      Mushroom-Idle_5: -1889482016
+      Mushroom-Idle_1: -476359022
+      Mushroom-Idle_2: -1415306703
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

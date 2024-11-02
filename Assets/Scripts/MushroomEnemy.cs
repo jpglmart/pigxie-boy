@@ -11,6 +11,10 @@ public class MushroomEnemy : MonoBehaviour
     // Variable to store Rigidbody2D component
     Rigidbody2D rb;
 
+    Animator animator;
+
+    public DetectionZone attackZone;
+
     TouchingDirections touchingDirections;
 
     public enum WalkableDirection { Right, Left };
@@ -45,12 +49,40 @@ public class MushroomEnemy : MonoBehaviour
         }
     }
 
+    public bool _hasTarget = false;
+
+    public bool CanMove 
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.canMove);
+        }
+    }
+
+    public bool HasTarget { get 
+        {
+            return _hasTarget;
+        } 
+        set 
+        { 
+            _hasTarget = value;
+            animator.SetBool(AnimationStrings.hasTarget, value);
+        } 
+    }
+
     // Awake is called when PlayerController is initialized
     public void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
+        animator = GetComponent<Animator>();
     }
+    // Update is called once per frame
+    void Update()
+    { 
+        HasTarget = attackZone.detectedColliders.Count > 0;
+    }
+
     // Frame-rate independent update method
     public void FixedUpdate()
     {
@@ -58,8 +90,15 @@ public class MushroomEnemy : MonoBehaviour
         {
             FlipDirection();
         }
-        // Move the enemy according to its speed
-        rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+        if (CanMove)
+        {
+            // Move the enemy according to its speed
+            rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+        } 
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
         
     }
 
