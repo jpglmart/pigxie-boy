@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     // Frame-rate independent update method
     private void FixedUpdate()
     {
-        // Move the player accoording to its speed and move input
+        // Move the player according to its speed and move input
         rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
         // Update animator yVelocity parameter
         animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
