@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 115095879398832430}
   - component: {fileID: 5101908537013344510}
   - component: {fileID: 7125031577722689019}
+  - component: {fileID: 6401516165156069919}
   m_Layer: 8
   m_Name: MushroomEnemy
   m_TagString: Untagged
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -923631524, guid: 9ea01a25c781cbb43964bd6b48631e02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5, y: 4}
@@ -194,6 +195,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6401516165156069919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489924593009124429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8598b9fb395e44b90ac5c5d6708a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
 --- !u!1 &2913179410780601272
 GameObject:
   m_ObjectHideFlags: 0

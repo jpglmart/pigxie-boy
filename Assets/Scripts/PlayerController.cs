@@ -62,6 +62,14 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+    public bool IsAlive
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.isAlive);
+        }
+    }
+
     // Property to get the current move speed
     public float CurrentMoveSpeed
     {
@@ -126,10 +134,17 @@ public class PlayerController : MonoBehaviour
     {
         // Get the move input value
         moveInput = context.ReadValue<Vector2>();
-        // Check if the player is moving
-        IsMoving = moveInput != Vector2.zero;
-        // Set the facing direction of the player
-        SetFacingDirection(moveInput);
+        if (IsAlive)
+        {
+            // Check if the player is moving
+            IsMoving = moveInput != Vector2.zero;
+            // Set the facing direction of the player
+            SetFacingDirection(moveInput);
+        }
+        else 
+        {
+            IsMoving = false;
+        }
     }
 
     // Method to execute when Jump callback is triggered
