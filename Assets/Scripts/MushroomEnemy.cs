@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Require the Rigidbody2D component to be attached to the same GameObject
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class MushroomEnemy : MonoBehaviour
 {
     // Variable to store the walk speed
@@ -16,6 +16,7 @@ public class MushroomEnemy : MonoBehaviour
     public DetectionZone attackZone;
 
     TouchingDirections touchingDirections;
+    Damageable damageable;
 
     public enum WalkableDirection { Right, Left };
 
@@ -73,9 +74,14 @@ public class MushroomEnemy : MonoBehaviour
     // Awake is called when PlayerController is initialized
     public void Awake() 
     {
+        // Get the reference to the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
+        // Get the reference to the TouchingDirections component
         touchingDirections = GetComponent<TouchingDirections>();
+        // Get the reference to the Animator component
         animator = GetComponent<Animator>();
+        // Get the reference to the Damageable component
+        damageable = GetComponent<Damageable>();
     }
     // Update is called once per frame
     void Update()
@@ -86,11 +92,11 @@ public class MushroomEnemy : MonoBehaviour
     // Frame-rate independent update method
     public void FixedUpdate()
     {
-        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall)
+        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall && damageable.IsAlive)
         {
             FlipDirection();
         }
-        if (CanMove)
+        if (CanMove && damageable.IsAlive)
         {
             // Move the enemy according to its speed
             rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
@@ -119,5 +125,10 @@ public class MushroomEnemy : MonoBehaviour
         {
             Debug.LogError("Current walkable direction is not set to right or left");
         }
+    }
+
+    public void OnHit(int damage, Vector2 knockBack)
+    {
+        rb.velocity = new Vector2(knockBack.x, rb.velocity.y + knockBack.y);
     }
 }

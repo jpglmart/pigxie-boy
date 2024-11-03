@@ -2934,6 +2934,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3168676752367430266, guid: ff5f22454926a82449d94cad2e39f017, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052310018048206742, guid: ff5f22454926a82449d94cad2e39f017, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2626572
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052310018048206742, guid: ff5f22454926a82449d94cad2e39f017, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.2360878
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5f22454926a82449d94cad2e39f017, type: 3}
@@ -2945,6 +2957,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1987265626569658512, guid: aa40e88dc1ba97743b3eebcd51138792, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1987265626569658514, guid: aa40e88dc1ba97743b3eebcd51138792, type: 3}
       propertyPath: m_Name
       value: Player

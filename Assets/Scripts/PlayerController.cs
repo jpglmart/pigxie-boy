@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Require the Rigidbody2D component to be attached to the same GameObject
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class PlayerController : MonoBehaviour
 {
     // Variable to store the move input
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool _isMoving = false;
     TouchingDirections touchingDirections;
+    Damageable damageable;
 
     // Property to check if the player is moving
     public bool IsMoving { 
@@ -106,15 +107,20 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         // Get the reference to the TouchingDirections component
         touchingDirections = GetComponent<TouchingDirections>();
+        // Get the reference to the Damageable component
+        damageable = GetComponent<Damageable>();
     }
 
     // Frame-rate independent update method
     private void FixedUpdate()
     {
-        // Move the player according to its speed and move input
-        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
-        // Update animator yVelocity parameter
-        animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
+        if (!damageable.IsHit)
+        {
+            // Move the player according to its speed and move input
+            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+            // Update animator yVelocity parameter
+            animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
+        }
     }
 
     // Method to set the facing direction of the player depending on the move input
@@ -150,8 +156,8 @@ public class PlayerController : MonoBehaviour
     // Method to execute when Jump callback is triggered
     public void OnJump(InputAction.CallbackContext context)
     {
-        // TODO check ifAlive 
-        if (context.started && touchingDirections.IsGrounded && CanMove)
+        
+        if (context.started && touchingDirections.IsGrounded && CanMove && IsAlive)
         {
             // Set animator jump trigger
             animator.SetTrigger(AnimationStrings.jumpTrigger);
@@ -162,11 +168,16 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        // TODO check ifAlive 
-        if (context.started && touchingDirections.IsGrounded)
+        
+        if (context.started && touchingDirections.IsGrounded  && IsAlive)
         {
             // Set animator attack trigger
             animator.SetTrigger(AnimationStrings.attackTrigger);
         }
+    }
+
+    public void OnHit(int damage, Vector2 knockBack)
+    {
+        rb.velocity = new Vector2(knockBack.x, rb.velocity.y + knockBack.y);
     }
 }
