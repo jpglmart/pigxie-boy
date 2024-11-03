@@ -14,6 +14,7 @@ public class MushroomEnemy : MonoBehaviour
     Animator animator;
 
     public DetectionZone attackZone;
+    public DetectionZone cliffDetectionZone;
 
     TouchingDirections touchingDirections;
     Damageable damageable;
@@ -92,7 +93,7 @@ public class MushroomEnemy : MonoBehaviour
     // Frame-rate independent update method
     public void FixedUpdate()
     {
-        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall && damageable.IsAlive)
+        if (touchingDirections.IsGrounded && (touchingDirections.IsOnWall || cliffDetectionZone.detectedColliders.Count == 0))
         {
             FlipDirection();
         }
