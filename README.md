@@ -1,6 +1,6 @@
-## Assets
+## Credits
 
-This project uses the following assets:
+This project uses the following visual assets:
 
   * [free-pixelart-tileset-cute-forest](https://aamatniekss.itch.io/free-pixelart-tileset-cute-forest) by "aamatniekss"
   * [beriesadventureseaside](https://crusenho.itch.io/beriesadventureseaside) by "Crusenho"
