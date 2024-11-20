@@ -1,3 +1,8 @@
+## Controls
+* Move - <kbd>A</kbd> / <kbd>D</kbd>
+* Jump - <kbd>J</kbd>
+* Attack - <kbd>K</kbd>
+
 ## Credits
 
 This project uses the following visual assets:
