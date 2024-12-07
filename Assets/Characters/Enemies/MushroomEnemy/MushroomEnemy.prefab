@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc805ec4517e884dbc597d4ef45c34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  attackDamage: 50
   knockBack: {x: 5, y: 2}
 --- !u!1 &2120404966274164879
 GameObject:
@@ -261,7 +261,7 @@ Transform:
   - {fileID: 2848536742435940408}
   - {fileID: 4370384598296379069}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2802793284104221574
 SpriteRenderer:
@@ -447,6 +447,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _maxHealth: 100
   _health: 100
   _isAlive: 1
