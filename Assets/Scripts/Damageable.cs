@@ -62,6 +62,19 @@ public class Damageable : MonoBehaviour
         } 
     }
 
+    private bool isPlayer = false;
+    public bool IsPlayer
+    {
+        get
+        {
+            return isPlayer;
+        }
+        set
+        {
+            isPlayer = value;
+        }
+    }
+
     private float timeSinceHit = 0;
     [SerializeField]
     private float invincibilityTime = 0.5f;

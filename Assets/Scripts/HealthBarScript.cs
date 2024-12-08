@@ -42,10 +42,4 @@ public class HealthBarScript : MonoBehaviour
     {
         healthSlider.value = CalculateSliderPercentage(currentHealth, maxHealth);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
