@@ -129,6 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   jumpImpulse: 6.5
+  itemCountChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _isMoving: 0
 --- !u!114 &7396913850680971657
 MonoBehaviour:
@@ -446,8 +449,8 @@ PolygonCollider2D:
     - - {x: -0.17094612, y: 0.43837345}
       - {x: -0.8045531, y: 0.43110976}
       - {x: -0.83198303, y: -1.1508768}
-      - {x: 0.39244413, y: -1.199714}
-      - {x: 0.46267986, y: 0.30901724}
+      - {x: 0.5160403, y: -1.199714}
+      - {x: 0.52447796, y: 0.3399157}
   m_UseDelaunayMesh: 0
 --- !u!114 &4143566592293929146
 MonoBehaviour:
