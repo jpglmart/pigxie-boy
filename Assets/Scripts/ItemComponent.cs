@@ -11,6 +11,7 @@ public class ItemComponent : MonoBehaviour
     GameObject player;
     // Reference to the PlayerController script
     PlayerController playerController;
+    TouchingDirections touchingDirections;
 
     [SerializeField]
     private bool _isMoving = true;
@@ -40,6 +41,8 @@ public class ItemComponent : MonoBehaviour
         {
             playerController = player.GetComponent<PlayerController>();
         }
+        // Get the reference to the TouchingDirections component
+        touchingDirections = GetComponent<TouchingDirections>();
     }
 
     // Start is called before the first frame update
@@ -58,6 +61,11 @@ public class ItemComponent : MonoBehaviour
         {
             // Rotate the item as it moves horizontally
             rb.rotation += 25f;
+        }
+
+        if (touchingDirections.IsGrounded || touchingDirections.IsOnWall)
+        {
+            Destroy(gameObject);
         }
 
     }
