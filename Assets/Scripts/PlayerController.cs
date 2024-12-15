@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 // Require the Rigidbody2D component to be attached to the same GameObject
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
@@ -18,11 +19,25 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     // Reference to the Animator component
     Animator animator;
+    TouchingDirections touchingDirections;
+    Damageable damageable;
+    public UnityEvent<int> itemCountChanged;
+    private int _itemCount = 1;
+    public int ItemCount
+    {
+        get
+        {
+            return _itemCount;
+        }
+        set
+        {
+            _itemCount = value;
+            itemCountChanged?.Invoke(_itemCount);
+        }
+    }
     // Variable to store if the player is moving [SerializedField to make it visible in the Inspector
     [SerializeField]
     private bool _isMoving = false;
-    TouchingDirections touchingDirections;
-    Damageable damageable;
 
     // Property to check if the player is moving
     public bool IsMoving { 
@@ -109,6 +124,7 @@ public class PlayerController : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
         // Get the reference to the Damageable component
         damageable = GetComponent<Damageable>();
+        damageable.IsPlayer = true;
     }
 
     // Frame-rate independent update method
@@ -173,6 +189,17 @@ public class PlayerController : MonoBehaviour
         {
             // Set animator attack trigger
             animator.SetTrigger(AnimationStrings.attackTrigger);
+        }
+    }
+
+    public void OnThrowableAttack(InputAction.CallbackContext context)
+    {
+
+        if (context.started && IsAlive && ItemCount > 0)
+        {
+            // Set animator throwableAttack trigger
+            animator.SetTrigger(AnimationStrings.throwableAttackTrigger);
+            ItemCount--;
         }
     }
 

@@ -18,6 +18,8 @@ public class MushroomEnemy : MonoBehaviour
 
     TouchingDirections touchingDirections;
     Damageable damageable;
+    // Variable to store the player's Damageable component
+    Damageable playerDamageable;
 
     public enum WalkableDirection { Right, Left };
 
@@ -66,9 +68,17 @@ public class MushroomEnemy : MonoBehaviour
             return _hasTarget;
         } 
         set 
-        { 
-            _hasTarget = value;
-            animator.SetBool(AnimationStrings.hasTarget, value);
+        {
+            if (playerDamageable != null && playerDamageable.IsAlive)
+            {
+                _hasTarget = value;
+                animator.SetBool(AnimationStrings.hasTarget, value);
+            }
+            else
+            {
+                _hasTarget = false;
+                animator.SetBool(AnimationStrings.hasTarget, false);
+            }
         } 
     }
 
@@ -83,6 +93,13 @@ public class MushroomEnemy : MonoBehaviour
         animator = GetComponent<Animator>();
         // Get the reference to the Damageable component
         damageable = GetComponent<Damageable>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.Log("No player found in the scene, make sure player GameObject has tag 'Player' assigned");
+        }
+        playerDamageable = player.GetComponent<Damageable>();
     }
     // Update is called once per frame
     void Update()

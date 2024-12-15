@@ -6,12 +6,13 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damageableHit;
+    public UnityEvent<int, int> healthChanged;
 
     Animator animator;
 
     [SerializeField]
     private int _maxHealth = 100;
-    public int MaxHeath 
+    public int MaxHealth 
     { 
         get 
         {
@@ -35,6 +36,7 @@ public class Damageable : MonoBehaviour
         set
         {
             _health = value;
+            healthChanged?.Invoke(_health, MaxHealth);
 
             // If health is less than or equal to 0, set IsAlive to false
             if (_health <= 0) 
@@ -58,6 +60,19 @@ public class Damageable : MonoBehaviour
         { 
             animator.SetBool(AnimationStrings.isHit, value);
         } 
+    }
+
+    private bool isPlayer = false;
+    public bool IsPlayer
+    {
+        get
+        {
+            return isPlayer;
+        }
+        set
+        {
+            isPlayer = value;
+        }
     }
 
     private float timeSinceHit = 0;
@@ -114,5 +129,17 @@ public class Damageable : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public bool Heal(int healthRestore)
+    {
+        if (IsAlive && Health < MaxHealth)
+        {
+            int maxHeal = Mathf.Max(MaxHealth - Health, 0);
+            int actualHeal = Mathf.Min(maxHeal, healthRestore);
+            Health += actualHeal;
+            return true;
+        }
+        return false;
     }
 }
