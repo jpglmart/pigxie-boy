@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthBarScript : MonoBehaviour
 {
@@ -41,5 +42,15 @@ public class HealthBarScript : MonoBehaviour
     private void OnPlayerHealthChanged(int currentHealth, int maxHealth)
     {
         healthSlider.value = CalculateSliderPercentage(currentHealth, maxHealth);
+        if (currentHealth <= 0)
+        {
+            // Invoke function after 2s
+            Invoke("DelaySceneReload", 2);
+        }
+    }
+
+    private void DelaySceneReload()
+    {
+        SceneManager.LoadSceneAsync("GameplayScene");
     }
 }

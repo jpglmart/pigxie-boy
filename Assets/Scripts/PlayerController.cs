@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get the move input value
         moveInput = context.ReadValue<Vector2>();
-        if (IsAlive)
+        if (IsAlive && moveInput.y == 0)
         {
             // Check if the player is moving
             IsMoving = moveInput != Vector2.zero;
