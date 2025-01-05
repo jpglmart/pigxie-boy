@@ -219,17 +219,6 @@
                 },
                 {
                     "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6d961ef8-3822-4c68-8137-cae32376a235",
                     "path": "<Keyboard>/j",
                     "interactions": "",
@@ -252,17 +241,6 @@
                 },
                 {
                     "name": "",
-                    "id": "0e22de94-466f-48ea-a5bf-0892fb9e5182",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b1e4461d-0bbe-48c8-ba90-7de48827c974",
                     "path": "<Keyboard>/l",
                     "interactions": "",
@@ -279,17 +257,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ThrowableAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dd8314cf-2330-4568-96d5-e499a8d39bb0",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
                     "action": "ThrowableAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
