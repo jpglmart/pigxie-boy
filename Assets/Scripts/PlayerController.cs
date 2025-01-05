@@ -216,6 +216,16 @@ public class PlayerController : MonoBehaviour
     {
         // Set animator celebrate trigger
         animator.SetTrigger(AnimationStrings.celebrateTrigger);
+        DisableMovement();
+    }
+
+    public void DisableMovement()
+    {
         CanMove = false;
+    }
+
+    public void EnableMovement()
+    {
+        CanMove = true;
     }
 }
