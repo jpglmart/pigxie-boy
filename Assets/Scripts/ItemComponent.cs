@@ -7,6 +7,9 @@ public class ItemComponent : MonoBehaviour
     public int attackDamage = 34;
     public Vector2 moveSpeed = new Vector2(5f, 0);
     public Vector2 knockBack = new Vector2(5, 2);
+    // Reference to the item audio source
+    AudioSource itemAudioSource;
+    public float volume = 1f;
     // Reference to the player GameObject
     GameObject player;
     // Reference to the PlayerController script
@@ -43,6 +46,8 @@ public class ItemComponent : MonoBehaviour
         }
         // Get the reference to the TouchingDirections component
         touchingDirections = GetComponent<TouchingDirections>();
+
+        itemAudioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -69,7 +74,7 @@ public class ItemComponent : MonoBehaviour
         }
 
     }
-        private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     { 
         Damageable damageable = collision.GetComponent<Damageable>();
         if (damageable != null)
@@ -90,10 +95,25 @@ public class ItemComponent : MonoBehaviour
             {
                 // Collision detected with player
                 Debug.Log(collision.name + " picked an item");
+                if (itemAudioSource)
+                {
+                    PlayClipAt(itemAudioSource.clip, gameObject.transform.position, volume);
+                }
                 playerController.ItemCount++;
                 Destroy(gameObject);
             }
 
         }
+    }
+    AudioSource PlayClipAt(AudioClip clip, Vector3 pos, float volume)
+    {
+        GameObject tempGO = new GameObject("TempAudio"); // create the temp object
+        tempGO.transform.position = pos; // set its position
+        AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
+        aSource.clip = clip; // define the clip
+        aSource.volume = volume; // set the volume
+        aSource.Play(); // start the sound
+        Destroy(tempGO, clip.length); // destroy object after clip duration
+        return aSource; // return the AudioSource reference
     }
 }

@@ -75,7 +75,11 @@ public class PlayerController : MonoBehaviour
     public bool CanMove { get
         { 
             return animator.GetBool(AnimationStrings.canMove);
-        } 
+        }
+        private set
+        {
+            animator.SetBool(AnimationStrings.canMove, value);
+        }
     }
 
     public bool IsAlive
@@ -156,7 +160,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get the move input value
         moveInput = context.ReadValue<Vector2>();
-        if (IsAlive)
+        if (IsAlive && moveInput.y == 0 && CanMove)
         {
             // Check if the player is moving
             IsMoving = moveInput != Vector2.zero;
@@ -185,7 +189,7 @@ public class PlayerController : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         
-        if (context.started && touchingDirections.IsGrounded  && IsAlive)
+        if (context.started && touchingDirections.IsGrounded  && IsAlive && CanMove)
         {
             // Set animator attack trigger
             animator.SetTrigger(AnimationStrings.attackTrigger);
@@ -195,7 +199,7 @@ public class PlayerController : MonoBehaviour
     public void OnThrowableAttack(InputAction.CallbackContext context)
     {
 
-        if (context.started && IsAlive && ItemCount > 0)
+        if (context.started && IsAlive && ItemCount > 0 && CanMove)
         {
             // Set animator throwableAttack trigger
             animator.SetTrigger(AnimationStrings.throwableAttackTrigger);
@@ -206,5 +210,22 @@ public class PlayerController : MonoBehaviour
     public void OnHit(int damage, Vector2 knockBack)
     {
         rb.velocity = new Vector2(knockBack.x, rb.velocity.y + knockBack.y);
+    }
+
+    public void Celebrate()
+    {
+        // Set animator celebrate trigger
+        animator.SetTrigger(AnimationStrings.celebrateTrigger);
+        DisableMovement();
+    }
+
+    public void DisableMovement()
+    {
+        CanMove = false;
+    }
+
+    public void EnableMovement()
+    {
+        CanMove = true;
     }
 }

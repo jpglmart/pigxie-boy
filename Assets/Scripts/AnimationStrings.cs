@@ -18,4 +18,5 @@ internal class AnimationStrings
     internal static string isAlive = "isAlive";
     internal static string isHit = "isHit";
     internal static string throwableAttackTrigger = "throwableAttack";
+    internal static string celebrateTrigger = "celebrate";
 }
