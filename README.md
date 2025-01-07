@@ -5,7 +5,7 @@
 * Attack - <kbd>K</kbd>
 * Throw item - <kbd>L</kbd>
 ### Gamepad
-* Move - <kbd>Left joystick</kbd>
+* Move - <kbd>D-Pad</kbd>
 * Jump - <kbd>A</kbd>
 * Attack - <kbd>X</kbd>
 * Throw item - <kbd>B</kbd>

@@ -1217,14 +1217,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Gamepad
 
-    Move: Left joystick
+    Move: D-Pad
 
     Jump: A
 
     Attack: X
 
-    Throw
-    item: B'
+    Throw item:
+    B'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f6d7163e74c1df4e8ff01b41888fa6a, type: 2}
   m_sharedMaterial: {fileID: 7909716860799937798, guid: 9f6d7163e74c1df4e8ff01b41888fa6a, type: 2}
