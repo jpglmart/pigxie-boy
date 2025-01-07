@@ -11,8 +11,11 @@ public class Dialogue : MonoBehaviour
     private int lineIndex;
     private float typingTime = 0.05f;
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject dialoguePlayerImage;
+    [SerializeField] private GameObject dialogueNpcImage;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
+    [SerializeField] private bool npcDialogue;
 
     // Reference to the player GameObject
     GameObject player;
@@ -40,10 +43,20 @@ public class Dialogue : MonoBehaviour
     }
 
     private void StartDialogue()
-    {
+    {   
         playerController.DisableMovement();
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
+        if (npcDialogue)
+        {
+            dialoguePlayerImage.SetActive(false);
+            dialogueNpcImage.SetActive(true);
+        }
+        else 
+        {
+            dialoguePlayerImage.SetActive(true);
+            dialogueNpcImage.SetActive(false);
+        }
         lineIndex = 0;
         StartCoroutine(ShowLine());
     }
@@ -63,6 +76,11 @@ public class Dialogue : MonoBehaviour
         lineIndex++;
         if (lineIndex < dialogueLines.Length)
         {
+            if (npcDialogue)
+            {
+                dialoguePlayerImage.SetActive(true);
+                dialogueNpcImage.SetActive(false);
+            }
             StartCoroutine(ShowLine());
         }
         else

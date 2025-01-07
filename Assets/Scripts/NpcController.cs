@@ -31,8 +31,8 @@ public class NpcController : MonoBehaviour
             {
                 // Collision detected with player
                 playerController.Celebrate();
-                // Invoke function after 8s
-                Invoke("DelaySceneLoad", 8);
+                // Invoke function after 5s
+                Invoke("DelaySceneLoad", 5);
             }
         }
     }
