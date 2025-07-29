@@ -1,12 +1,9 @@
 ## Pigxie Boy: A curly tale
-<p>
-Step into the hoofs of a truly unique character as he embarks on a journey to discover where he truly belongs.
-
-Inspired by classic titles like 'Super Mario Bros.' and 'Wonder Boy: The Dragon's Trap', the game focuses on core platforming mechanics: jumping, walking, attacking, and dodging enemy encounters. Immerse yourself in a vibrant world brought to life with delightful pixel art aesthetics.
-
-</p>
 <p align="center">
 <img src="gif_pigxie.gif" width="50%" height="50%"/>
+</p>
+<p>
+Step into the hoofs of a truly unique character as he embarks on a journey to discover where he truly belongs. Inspired by classic titles like 'Super Mario Bros.' and 'Wonder Boy: The Dragon's Trap', the game focuses on core platforming mechanics: jumping, walking, attacking, and dodging enemy encounters. Immerse yourself in a vibrant world brought to life with delightful pixel art aesthetics.
 </p>
 
 ## Controls
